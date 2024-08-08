@@ -45,7 +45,11 @@ def main():
             positions = adjust_grid(positions)  # updates cell states
 
         # window caption
-        pygame.display.set_caption("Playing" if playing else "Paused")
+        pygame.display.set_caption(
+            f"Playing (Population: {len(positions)})"
+            if playing
+            else f"Paused (Population: {len(positions)})"
+        )
 
         for event in pygame.event.get():
             # exits the program
@@ -77,7 +81,7 @@ def main():
 
                 # generates random live cells
                 if event.key == pygame.K_x:
-                    positions = gen(random.randrange(8, 18) * grid_width)
+                    positions = gen(random.randrange(15, 30) * grid_width)
 
         screen.fill(white)
         draw_grid(positions)
